@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>secret stuff for subject</title>
   <style>
     body {
@@ -70,7 +71,6 @@
       to {opacity: 1; transform: translateY(0);}
     }
 
-    /* Notebook-style borders */
     .notebook {
       border: 2px dashed #8f57ff;
       border-radius: 12px;
@@ -81,7 +81,6 @@
       margin-top: 10px;
     }
 
-    /* Scrollable gallery */
     .scrollable {
       max-height: 400px;
       overflow-y: auto;
@@ -112,7 +111,6 @@
       color: #444;
     }
 
-    /* Floating doodles */
     .doodle {
       position: absolute;
       font-size: 2rem;
@@ -133,11 +131,31 @@
       50% { transform: translateY(-20px); }
       100% { transform: translateY(0); }
     }
+
+    /* Mobile adjustments */
+    @media screen and (max-width: 600px) {
+      body { height: auto; padding: 10px 0; }
+      h1 { font-size: 6vw; }
+      input { width: 90%; font-size: 4vw; }
+      button { font-size: 4vw; padding: 8px 16px; }
+      .notebook { font-size: 4vw; padding: 15px; }
+      .note { font-size: 3.5vw; }
+      .scrollable { max-height: 50vh; padding-right: 5px; }
+      .gallery { gap: 10px; grid-template-columns: 1fr; }
+
+      .doodle { font-size: 4vw; }
+      .d1 { top: 5%; left: 5%; }
+      .d2 { top: 10%; right: 5%; }
+      .d3 { bottom: 10%; left: 10%; }
+      .d4 { bottom: 5%; right: 5%; }
+      .d5 { top: 20%; left: 30%; }
+      .d6 { bottom: 20%; right: 20%; }
+    }
   </style>
 </head>
 <body>
 
-<!-- Doodles floating around -->
+<!-- Doodles -->
 <div class="doodle d1">☕</div>
 <div class="doodle d2">💤</div>
 <div class="doodle d3">🍰</div>
@@ -145,7 +163,7 @@
 <div class="doodle d5">🌸</div>
 <div class="doodle d6">⭐</div>
 
-<!-- Page 1: Access Gate -->
+<!-- Pages -->
 <div class="page active" id="page1">
   <h1>Beware intruder! Only Rasmalai Can Enter!!</h1>
   <p>If that's really you, prove it:</p>
@@ -155,14 +173,12 @@
   <button onclick="checkAnswer()">Enter</button>
 </div>
 
-<!-- Page 2: Transition -->
 <div class="page" id="page2">
   <h1>Correct ✅</h1>
   <p class="fade">Well then, I have something for you...</p>
   <button onclick="nextPage(3)">Continue</button>
 </div>
 
-<!-- Page 3: Poem -->
 <div class="page" id="page3">
   <h1>for youu~</h1>
   <div class="notebook fade">
@@ -177,65 +193,37 @@
   </div>
   <button onclick="nextPage(4)">Next</button>
 </div>
-<!-- Page 4: Funny + Call Screens (scrollable) -->
+
 <div class="page" id="page4">
   <h1>Moments with You 📸</h1>
   <div class="scrollable">
     <div class="gallery">
-      <!-- Funny Screens -->
-      <div>
-        <img src="images/funni1.png" alt="Funny 1">
-        <p class="note">"This one still cracks me up 🤭"</p>
-      </div>
-      <div>
-        <img src="images/funni2.png" alt="Funny 2">
-        <p class="note">"that's me for ya"</p>
-      </div>
-      <!-- Call Memories -->
-      <div>
-        <img src="images/call1.png" alt="Call 39:07">
-        <p class="note">"Just a quick ‘short’ call 😅"</p>
-      </div>
-      <div>
-        <img src="images/call2.png" alt="Call 1:01:34">
-        <p class="note">"So much for a ‘small chat’ 💕"</p>
-      </div>
-      <div>
-        <img src="images/call3.png" alt="Call 2:36:46">
-        <p class="note">"And somehow… this became a marathon 💤,still wasnt tired.."</p>
-      </div>
-      <div>
-        <img src="images/call4.png" alt="Call 1:20:28">
-        <p class="note">"another story 📖"</p>
-      </div>
-    </div> <!-- closes gallery -->
-
-    <p style="margin-top:20px; font-style:italic; color:#6a00ff;">
-      ✨ Guess time really flies by with you ⏳💜
-    </p>
-  </div> <!-- closes scrollable -->
-   <button onclick="nextPage(5)">Next</button>
+      <div><img src="images/funni1.png" alt="Funny 1"><p class="note">"This one still cracks me up 🤭"</p></div>
+      <div><img src="images/funni2.png" alt="Funny 2"><p class="note">"that's me for ya"</p></div>
+      <div><img src="images/call1.png" alt="Call 39:07"><p class="note">"Just a quick ‘short’ call 😅"</p></div>
+      <div><img src="images/call2.png" alt="Call 1:01:34"><p class="note">"So much for a ‘small chat’ 💕"</p></div>
+      <div><img src="images/call3.png" alt="Call 2:36:46"><p class="note">"And somehow… this became a marathon 💤,still wasnt tired.."</p></div>
+      <div><img src="images/call4.png" alt="Call 1:20:28"><p class="note">"another story 📖"</p></div>
+    </div>
+    <p style="margin-top:20px; font-style:italic; color:#6a00ff;">✨ Guess time really flies by with you ⏳💜</p>
+  </div>
+  <button onclick="nextPage(5)">Next</button>
 </div>
 
-<!-- Page 5: Spotify Playlist -->
 <div class="page" id="page5">
   <h1>Our Vibes 🎶</h1>
   <div class="notebook fade">
     <p>something rasmalai would go with on repeat...</p>
-    <iframe
-  style="border-radius:12px"
-  src="https://embed.spotify.com/?uri=spotify:playlist:5UkIQy0DCX70Hs4G43suhB"
-  width="100%"
-  height="380"
-  frameBorder="0"
-  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-  loading="lazy"
-></iframe>
-
+    <iframe style="border-radius:12px" 
+      src="https://open.spotify.com/embed/playlist/5UkIQy0DCX70Hs4G43suhB?utm_source=generator" 
+      width="100%" height="380" frameborder="0" 
+      allowfullscreen="" 
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+      loading="lazy"></iframe>
   </div>
   <button onclick="nextPage(6)">Next</button>
 </div>
-<!-- Page 6: Final Note -->
+
 <div class="page" id="page6">
   <h1>One Last Thing 💌</h1>
   <div class="notebook fade">
@@ -248,33 +236,28 @@
 </div>
 
 <script>
-  let failedOnce = false;
+let failedOnce = false;
 
-  function checkAnswer() {
-    const input = document.getElementById("secretInput").value.toLowerCase().trim();
-    const correctAnswer = "majestic";
-
-    if (input === correctAnswer) {
-      nextPage(2);
+function checkAnswer() {
+  const input = document.getElementById("secretInput").value.toLowerCase().trim();
+  const correctAnswer = "majestic";
+  if (input === correctAnswer) {
+    nextPage(2);
+  } else {
+    if (!failedOnce) {
+      alert("Hint: rhymes with your name!");
+      failedOnce = true;
     } else {
-      if (!failedOnce) {
-        alert("Hint: rhymes with your name!");
-        failedOnce = true;
-      } else {
-        alert("Not quite. Try again.");
-      }
+      alert("Not quite. Try again.");
     }
   }
+}
 
-  function nextPage(pageNum) {
-    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-    document.getElementById("page" + pageNum).classList.add("active");
-  }
+function nextPage(pageNum) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById("page" + pageNum).classList.add("active");
+}
 </script>
 
 </body>
 </html>
-
-
-
-
